@@ -17,7 +17,7 @@ const products = [
     size: "4 × 6",
     finish: "Glossy",
     price: "₹100 / sq.ft",
-    img: "images/onyx-pearl.jpg"
+    img: "images/ONYX PEARL.jpg"
   },
   {
     name: "Burberry Crema",
