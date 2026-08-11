@@ -8,7 +8,7 @@ const products = [
     size: "4 × 6",
     finish: "Premium",
     price: "₹100 / sq.ft",
-    img: "PASTE_FANTASY_CREMA_IMAGE_URL"
+    img: "images/FANTACY CREMA.jpg"
   },
   {
     name: "Onyx Pearl",
@@ -17,7 +17,7 @@ const products = [
     size: "4 × 6",
     finish: "Glossy",
     price: "₹100 / sq.ft",
-    img: "PASTE_ONYX_PEARL_IMAGE_URL"
+    img: "images/onyx-pearl.jpg"
   },
   {
     name: "Burberry Crema",
@@ -26,7 +26,7 @@ const products = [
     size: "4 × 6",
     finish: "Premium",
     price: "₹100 / sq.ft",
-    img: "PASTE_BURBERRY_CREMA_IMAGE_URL"
+   img: "images/BURBURRY CREMA.jpg"
   },
   {
     name: "Nuvola Grey",
@@ -35,7 +35,7 @@ const products = [
     size: "4 × 6",
     finish: "Glossy",
     price: "₹100 / sq.ft",
-    img: "PASTE_NUVOLA_GREY_IMAGE_URL"
+    img: "images/NUVOLA GREY.jpg"
   },
   {
     name: "Statuario Eminence",
@@ -44,7 +44,7 @@ const products = [
     size: "4 × 6",
     finish: "Glossy",
     price: "₹100 / sq.ft",
-    img: "PASTE_STATUARIO_EMINENCE_IMAGE_URL"
+    img: "images/STATUARIO EMINENCE.jpg"
   }
 ];
 
