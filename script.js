@@ -44,10 +44,15 @@ if(home){
     const zoom = base + (2.2 - base) * p;
 const rotate = (p - 0.5) * -3;
 
+const zoom = base + (2.4 - base) * p;
+const moveY = -8 * p;
+const tilt = 2 * p;
+
 shot.style.transform = `
-  translate(-50%, -50%)
+  translate(-50%, calc(-50% + ${moveY}%))
+  perspective(1200px)
+  rotateX(${tilt}deg)
   scale(${zoom})
-  rotateX(${rotate}deg)
 `;
     const i=d?(p<.1?-1:p<.4?0:p<.72?1:2):(p<.33?0:p<.7?1:2);
     caps.forEach((c,j)=>c.classList.toggle('on',j===i));
@@ -87,4 +92,19 @@ shot.style.transform = `
 
 .cap {
   text-shadow: 0 3px 15px rgba(0,0,0,.4);
+}
+.stage {
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+.shot {
+  transform-origin: 50% 48%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.cap {
+  transition: opacity .6s ease, transform .6s ease;
 }
