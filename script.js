@@ -1,8 +1,6 @@
 const $=s=>document.querySelector(s);
 $('.menu-btn').onclick=()=>$('.nav').classList.toggle('open');
 document.querySelectorAll('.nav a').forEach(a=>a.onclick=()=>$('.nav').classList.remove('open'));
-
-/* Cards and visiting card tilt toward finger or mouse */
 document.querySelectorAll('.tilt').forEach(el=>{
   const mv=e=>{const t=e.touches?e.touches[0]:e,r=el.getBoundingClientRect(),x=(t.clientX-r.left)/r.width-.5,y=(t.clientY-r.top)/r.height-.5;
     el.style.transform=`perspective(700px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.03)`};
@@ -10,77 +8,46 @@ document.querySelectorAll('.tilt').forEach(el=>{
   el.addEventListener('touchmove',mv,{passive:true});
   ['mouseleave','touchend'].forEach(v=>el.addEventListener(v,()=>el.style.transform=''));
 });
+const qs=$('.sticky');
+if(qs)qs.innerHTML='<h2>Double charge tiles</h2><p>More strength. More elegance.</p><ul class="layers"><li class="l1"><b>Glazed surface</b>Rich finish.</li><li class="l2"><b>Design layer</b>Stunning looks.</li><li class="l3"><b>Double charge</b>Extra strength.</li><li class="l4"><b>Strong body</b>Long life.</li></ul>';
 
-/* 3D showroom: tiles drop in, camera walks through, end tile splits into layers */
-(function(){
-  const cv=$('#tile3d');
-  if(!window.THREE||!cv)return;
-  let R;
-  try{R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true})}catch(e){cv.style.display='none';return}
-  R.setPixelRatio(Math.min(devicePixelRatio,1.5));
-  R.setSize(innerWidth,innerHeight);
-  const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,innerWidth/innerHeight,.1,60);
-  sc.fog=new THREE.Fog(0xf7f4ee,6,26);
-  sc.add(new THREE.AmbientLight(0xffffff,.8));
-  const sun=new THREE.DirectionalLight(0xffffff,.8);sun.position.set(3,8,4);sc.add(sun);
-  const glow=new THREE.PointLight(0xffffff,1,10);sc.add(glow);
-
-  /* Three rooms along the walk: living (beige), bathroom (blue), kitchen (terracotta) */
-  const F=[[0xeee6d8,0xd3c3a6],[0xffffff,0x0095d9],[0xf3eadc,0xc4432b]];
-  const W=[[0xe9dfcd,0xf5efe4],[0xdff1fb,0xb9e0f3],[0xf6ede1,0xe3cdb0]];
-  const st=1.46,rows=22,it=[];
-  for(let r=0;r<rows;r++){
-    const z=5-r*st,n=Math.min(2,r/7|0),d=r*.07;
-    for(let c=0;c<4;c++)it.push({x:(c-1.5)*st,y:0,z,d:d+Math.random()*.4,p:F[n][(r+c)%2]});
-    for(const s of[-1,1])for(let h=0;h<3;h++)it.push({x:s*3,y:.75+h*st,z,d:d+Math.random()*.4,p:W[n][(r+h)%2],w:1});
-  }
-  const mesh=new THREE.InstancedMesh(new THREE.BoxGeometry(1.4,.12,1.4),new THREE.MeshStandardMaterial({roughness:.18,metalness:.12}),it.length),o=new THREE.Object3D();
-  it.forEach((t,i)=>mesh.setColorAt(i,new THREE.Color(t.p)));
-  sc.add(mesh);
-
-  const ease=x=>1-Math.pow(1-x,3);
-  const t0=performance.now();
-  let intro=true;
-  function place(sec){
-    let done=true;
-    it.forEach((t,i)=>{
-      const e=ease(Math.min(1,Math.max(0,(sec-t.d)/.9)));
-      if(e<1)done=false;
-      o.position.set(t.x,t.y+(1-e)*10,t.z);
-      o.rotation.set(0,(1-e)*1.5,t.w?Math.PI/2:0);
-      o.scale.setScalar(.3+.7*e);
-      o.updateMatrix();
-      mesh.setMatrixAt(i,o.matrix);
-    });
-    mesh.instanceMatrix.needsUpdate=true;
-    return done;
-  }
-
-  /* End of the walk: one tile splits into glaze, body and base */
-  const ex=new THREE.Group();
-  [[0x0095d9,.1],[0xe3d3bb,.35],[0xa52a2a,.15]].forEach(([c,h])=>{
-    ex.add(new THREE.Mesh(new THREE.BoxGeometry(2.6,h,2.6),new THREE.MeshStandardMaterial({color:c,roughness:.2,metalness:.1})));
-  });
-  ex.position.set(0,1.7,-26.5);ex.rotation.x=.9;
-  sc.add(ex);
-
-  let tgt=0,cur=0;
-  const sp=()=>{const m=document.documentElement.scrollHeight-innerHeight;tgt=m>0?scrollY/m:0};
-  addEventListener('scroll',sp);sp();
-  addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();R.setSize(innerWidth,innerHeight)});
-
-  (function loop(){
-    requestAnimationFrame(loop);
-    const t=performance.now()/1000;
-    cur+=(tgt-cur)*.07;
-    if(intro)intro=!place((performance.now()-t0)/1000-.2);
-    const z=7-cur*26.5;
-    cam.position.set(Math.sin(t*.4+cur*6)*.25,1.7-.3*Math.sin(cur*3),z);
-    cam.lookAt(0,1.4,z-7);
-    glow.position.set(0,2.5,z-2);
-    const e=Math.min(1,Math.max(0,(cur-.7)/.22));
-    ex.children.forEach((m,i)=>m.position.y=[1,0,-1][i]*(.25+e*1.4));
-    ex.rotation.y=cur*5;
-    R.render(sc,cam);
-  })();
-})();
+/* Showroom hero: your picture with working buttons, zooms in as you scroll */
+const home=$('#home');
+if(home){
+  home.className='walk';
+  home.innerHTML=`<div class="stage">
+    <div class="shot" style="background:url(images/showroom.png) center/100% 100% no-repeat">
+      <a class="hs" style="left:29.5%;top:3.2%;width:8.4%;height:4.4%" href="#home" aria-label="Our showroom"></a>
+      <a class="hs" style="left:40.2%;top:3.2%;width:8.9%;height:4.4%" href="#products" aria-label="Tile collections"></a>
+      <a class="hs" style="left:51.3%;top:3.2%;width:3.9%;height:4.4%" href="#brands" aria-label="Brands"></a>
+      <a class="hs" style="left:57.5%;top:3.2%;width:4.8%;height:4.4%" href="#quality" aria-label="About us"></a>
+      <a class="hs" style="left:64.7%;top:3.2%;width:4.6%;height:4.4%" href="#contact" aria-label="Contact"></a>
+      <a class="hs go" style="left:4.8%;top:86.5%;width:15.1%;height:6.4%" href="#products" aria-label="Start walkthrough"></a>
+      <a class="hs" style="left:77.6%;top:90.2%;width:15.1%;height:5.4%" href="#products" aria-label="Explore our collections"></a>
+    </div>
+    <div class="shade"></div>
+    <div class="cap c1"><h1>Walk into the floor you want.</h1><p>Tiles, sanitary ware and complete building solutions. Official partner of RAK Ceramics, Hayathnagar.</p><a class="btn b1" href="tel:+919848337316">Call 98483 37316</a><a class="btn b2" target="_blank" rel="noopener" href="https://wa.me/919848337316?text=Hi%20BIZZOTTOCERAMICS%2C%20I%20would%20like%20to%20enquire.">Chat on WhatsApp</a></div>
+    <div class="cap c2"><h2>RAK Ceramics, Somany and more under one roof.</h2></div>
+    <div class="cap c3"><h2>Double charge tiles. More strength, more elegance.</h2><a class="btn b1" href="#products">Explore our collections</a></div>
+    <div class="feat"><span>Premium quality</span><span>High durability</span><span>Elegant finish</span><span>Wide range</span></div>
+    <div class="hint">Scroll to walk in</div>
+  </div>`;
+  const shot=home.querySelector('.shot'),caps=[...home.querySelectorAll('.cap')],hint=home.querySelector('.hint'),feat=home.querySelector('.feat');
+  const go=home.querySelector('.go');
+  go.onclick=e=>{e.preventDefault();scrollBy({top:innerHeight*1.2,behavior:'smooth'})};
+  const upd=()=>{
+    const d=innerWidth>=900&&innerWidth/innerHeight>1.3;
+    const r=home.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(home.offsetHeight-innerHeight)));
+    document.body.classList.toggle('desk',d);
+    document.body.classList.toggle('hdr-off',d&&p<.06);
+    const base=d?1:1.38;
+    shot.style.transform=`translate(-50%,-50%) scale(${base+(1.9-base)*p})`;
+    const i=d?(p<.1?-1:p<.4?0:p<.72?1:2):(p<.33?0:p<.7?1:2);
+    caps.forEach((c,j)=>c.classList.toggle('on',j===i));
+    feat.style.opacity=d&&p<.1?0:1;
+    hint.style.opacity=!d&&p<.05?1:0;
+  };
+  addEventListener('scroll',upd,{passive:true});
+  addEventListener('resize',upd);
+  upd();
+}
