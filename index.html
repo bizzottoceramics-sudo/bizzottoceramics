@@ -1,117 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BIZZOTTOCERAMICS - Premium tiles and building solutions in Hayathnagar, Hyderabad. Official dealers of RAK Ceramics and Somany.">
-  <title>BIZZOTTOCERAMICS | Premium Tiles & Building Solutions</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIZZOTTO CERAMICS | Premium Tiles & Building Solutions, Hayathnagar</title>
+<meta name="description" content="BIZZOTTO CERAMICS in Hayathnagar, Hyderabad: tiles, sanitary ware, CP fittings and building solutions. Official RAK Ceramics partner. Dealers of Johnson, Somany and Kajaria.">
+<link rel="icon" href="images/logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeGoodsStore","name":"BIZZOTTO CERAMICS","telephone":"+919848337316","email":"bizzottoceramics@gmail.com","url":"https://www.bizzotto.in","address":{"@type":"PostalAddress","streetAddress":"No.4-9-330, RTC Colony, Hayathnagar","addressLocality":"Hyderabad","addressRegion":"Telangana","postalCode":"501505","addressCountry":"IN"}}</script>
 </head>
 <body>
-  <header class="site-header">
-    <a class="logo" href="#home">BIZZOTTO<span>CERAMICS</span></a>
-    <button class="menu-btn" aria-label="Open menu">☰</button>
-    <nav class="nav">
-      <a href="#home">Home</a><a href="#products">Products</a><a href="#brands">Brands</a>
-      <a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a>
-    </nav>
-  </header>
+<canvas id="tile3d"></canvas>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">PREMIUM TILES • BUILDING SOLUTIONS</p>
-        <h1>Transform Your Space With <em>Timeless Elegance.</em></h1>
-        <p>Premium tiles, slabs, sanitary ware and complete building solutions for beautiful spaces.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#products">Explore Products</a>
-          <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/919848337316?text=Hi%20BIZZOTTOCERAMICS%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products.">WhatsApp Us</a>
-        </div>
-        <p class="location">📍 Hayathnagar, Hyderabad • RTC Colony</p>
-      </div>
-    </section>
+<header class="site-header">
+  <a class="logo" href="#home" aria-label="Bizzotto Ceramics home"><span class="crop"><img src="images/logo.jpeg" alt="Bizzotto Ceramics"></span></a>
+  <button class="menu-btn" aria-label="Open menu">&#9776;</button>
+  <nav class="nav">
+    <a href="#home">Home</a><a href="#products">Products</a><a href="#brands">Brands</a><a href="#quality">Quality</a><a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <section class="trust-strip">
-      <div><strong>Official Dealers</strong><span>RAK Ceramics & Somany</span></div>
-      <div><strong>Premium Selection</strong><span>Tiles • Slabs • Sanitary Ware</span></div>
-      <div><strong>Easy Enquiry</strong><span>WhatsApp • Call • Visit</span></div>
-    </section>
+<main>
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <p class="note">Official partner of RAK Ceramics, Hayathnagar</p>
+      <h1>Walk into the floor you want.</h1>
+      <p class="lead">Tiles, sanitary ware and complete building solutions. Scroll down and walk through our showroom.</p>
+      <a class="btn b1" href="tel:+919848337316">Call 98483 37316</a>
+      <a class="btn b2" target="_blank" rel="noopener" href="https://wa.me/919848337316?text=Hi%20BIZZOTTOCERAMICS%2C%20I%20would%20like%20to%20enquire.">Chat on WhatsApp</a>
+    </div>
+  </section>
 
-    <section id="products" class="section">
-      <div class="section-head">
-        <p class="eyebrow">OUR COLLECTION</p>
-        <h2>Explore Our Products</h2>
-        <p>Browse our premium selection. Replace the sample images with your real showroom/product photos.</p>
+  <section id="products">
+    <div class="wrap panel">
+      <h2>Everything for your space</h2>
+      <p>The living room floor, the bathroom wall, the kitchen counter. Find all of it under one roof.</p>
+      <div class="grid">
+        <div class="card tilt"><h3>Tiles</h3><p>Floor, wall, parking and elevation tiles.</p></div>
+        <div class="card tilt"><h3>Sanitary ware</h3><p>Modern bathroom sets and fittings.</p></div>
+        <div class="card tilt"><h3>CP fittings</h3><p>Taps, showers and accessories.</p></div>
+        <div class="card tilt"><h3>Table ware</h3><p>Everyday and premium dining sets.</p></div>
+        <div class="card tilt"><h3>Havells electrics</h3><p>Switches, wires and lighting.</p></div>
+        <div class="card tilt"><h3>Terracotta jali</h3><p>Natural ventilation with a classic look.</p></div>
+        <div class="card tilt"><h3>Elements floor sheets</h3><p>Durable, easy to maintain floor sheets.</p></div>
+        <div class="card tilt"><h3>FRP manhole covers</h3><p>Strong, light and rust free.</p></div>
       </div>
-      <div class="filters" id="filters"></div>
-      <div class="product-grid" id="productGrid"></div>
-    </section>
+    </div>
+  </section>
 
-    <section id="brands" class="dark-section">
-      <div class="section-head">
-        <p class="eyebrow">TRUSTED BRANDS</p>
-        <h2>Official Dealers</h2>
+  <section id="brands">
+    <div class="wrap panel">
+      <h2>Brands you can trust</h2>
+      <div class="strip">
+        <img class="bl big" src="images/rak.png" alt="RAK Ceramics, official partner"><img class="bl big" src="images/somany.png" alt="Somany Tiles and Bathware">
       </div>
-      <div class="brands">
-        <div class="brand-card"><span>RAK</span><strong>CERAMICS</strong><small>Official Dealer</small></div>
-        <div class="brand-card"><span>SOMANY</span><strong>CERAMICS</strong><small>Official Dealer</small></div>
+      <p>Official partner of RAK Ceramics, and dealer of Somany.</p>
+      <p class="also">Also available</p>
+      <div class="strip">
+        <img class="bl sm" src="images/johnson.png" alt="Johnson Designers' Choice"><img class="bl sm" src="images/kajaria.png" alt="Kajaria"><img class="bl sm" src="images/vevon.png" alt="Vevon Tiles"><img class="bl sm" src="images/havells.png" alt="Havells">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="gallery" class="section">
-      <div class="section-head">
-        <p class="eyebrow">SHOWROOM & INSPIRATION</p>
-        <h2>Gallery</h2>
-        <p>Add your showroom and project photos to the <code>images</code> folder.</p>
-      </div>
-      <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80" alt="Luxury interior with premium flooring">
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80" alt="Modern premium interior">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Modern home exterior">
-        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80" alt="Luxury bathroom">
-      </div>
-    </section>
+  <section id="quality" class="quality">
+    <div class="sticky panel">
+      <h2>Three layers make one lasting floor</h2>
+      <ul class="layers">
+        <li class="l1"><b>Glaze</b> Resists stains and scratches.</li>
+        <li class="l2"><b>Body</b> Gives strength under heavy footfall.</li>
+        <li class="l3"><b>Base</b> Grips the adhesive for a firm fix.</li>
+      </ul>
+    </div>
+  </section>
 
-    <section id="about" class="about">
+  <section id="contact">
+    <div class="wrap panel contact-grid">
       <div>
-        <p class="eyebrow">ABOUT BIZZOTTOCERAMICS</p>
-        <h2>Quality that becomes part of your space.</h2>
+        <h2>Visit our showroom</h2>
+        <p><b>N Saidul Reddy</b>, Proprietor</p>
+        <p>No.4-9-330, RTC Colony, Hayathnagar,<br>Ranga Reddy District, Telangana 501505</p>
+        <p><b>Call:</b> <a class="tel" href="tel:+919848337316">98483 37316</a>, <a class="tel" href="tel:+919030337316">90303 37316</a><br>
+        <b>Office:</b> <a class="tel" href="tel:+917386337316">73863 37316</a>, <b>Sales:</b> <a class="tel" href="tel:+917386437316">73864 37316</a></p>
+        <p><a class="tel" href="mailto:bizzottoceramics@gmail.com">bizzottoceramics@gmail.com</a><br><a class="tel" href="mailto:info@bizzotto.in">info@bizzotto.in</a></p>
+        <p><b>Branches:</b> Hayathnagar, Madhapur, 100 Feet Road, Jubilee Check Post</p>
+        <a class="btn b1" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hayathnagar%20Hyderabad%20RTC%20Colony">Get directions</a>
       </div>
-      <div>
-        <p>We bring together premium tile designs, trusted brands and professional guidance to help you create beautiful homes and commercial spaces.</p>
-        <div class="features"><span>✓ Quality</span><span>✓ Elegant Designs</span><span>✓ Trusted Brands</span><span>✓ Expert Guidance</span></div>
-      </div>
-    </section>
+      <div class="tilt"><img src="images/visiting-card.jpeg" alt="Bizzotto Ceramics visiting card" loading="lazy"></div>
+    </div>
+  </section>
+</main>
 
-    <section id="contact" class="section contact">
-      <div class="section-head">
-        <p class="eyebrow">VISIT US</p>
-        <h2>Let's build something beautiful.</h2>
-        <p>BIZZOTTOCERAMICS • Hayathnagar, Hyderabad, RTC Colony</p>
-      </div>
-      <div class="contact-grid">
-        <a href="tel:+919848337316" class="contact-card">📞<strong>Call Us</strong><span>9848337316</span></a>
-        <a target="_blank" rel="noopener" href="https://wa.me/919848337316?text=Hi%20BIZZOTTOCERAMICS%2C%20I%20would%20like%20to%20enquire%20about%20your%20tiles." class="contact-card">💬<strong>WhatsApp</strong><span>Send an enquiry</span></a>
-        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hayathnagar%20Hyderabad%20RTC%20Colony" class="contact-card">📍<strong>Get Directions</strong><span>Hayathnagar, Hyderabad</span></a>
-      </div>
-    </section>
+<footer>&copy; 2026 BIZZOTTO CERAMICS. Premium Tiles &amp; Building Solutions, Hayathnagar.</footer>
 
-    
-  </main>
+<div class="fab">
+  <a style="background:#0070c0" href="tel:+919848337316">Call</a>
+  <a style="background:#1fa855" target="_blank" rel="noopener" href="https://wa.me/919848337316?text=Hi%20BIZZOTTOCERAMICS%2C%20I%20would%20like%20to%20enquire.">WhatsApp</a>
+</div>
 
-  <footer>
-    <div><a class="logo" href="#home">BIZZOTTO<span>CERAMICS</span></a><p>Premium Tiles & Building Solutions</p></div>
-    <p>© 2026 BIZZOTTOCERAMICS. All rights reserved.</p>
-  </footer>
-
-  <div class="mobile-bar">
-    <a href="tel:+919848337316">📞 Call</a>
-    <a href="https://wa.me/919848337316?text=Hi%20BIZZOTTOCERAMICS%2C%20I%20would%20like%20to%20enquire." target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Hayathnagar%20Hyderabad%20RTC%20Colony" target="_blank" rel="noopener">📍 Directions</a>
-  </div>
-  <canvas id="tile3d"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="tiles3d.js"></script>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
