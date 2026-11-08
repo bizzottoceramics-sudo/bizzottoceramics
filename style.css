@@ -56,3 +56,11 @@ section{padding:70px 4vw}.panel{padding:22px}
 .bl.big{width:min(230px,44vw);height:auto;aspect-ratio:230/140;border:2px solid var(--blue);box-shadow:0 12px 26px rgba(0,112,192,.2)}
 .bl.sm{width:min(96px,21vw);height:auto;aspect-ratio:1}
 .also{margin-top:26px;font-weight:800}
+
+.shot{inset:auto;left:50%;top:50%;right:auto;bottom:auto;width:max(100vw,calc(100svh*1.7773));height:auto;aspect-ratio:1672/941;transform-origin:50% 48%}
+.hs{display:none;position:absolute;border-radius:30px;cursor:pointer}
+.desk .hs{display:block}
+.hs:hover,.hs:focus-visible{background:rgba(255,255,255,.18)}
+.desk .shade{display:none}
+.site-header{transition:opacity .35s,transform .35s}
+.hdr-off .site-header{opacity:0;transform:translateY(-100%);pointer-events:none}
