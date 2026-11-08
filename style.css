@@ -64,3 +64,137 @@ section{padding:70px 4vw}.panel{padding:22px}
 .desk .shade{display:none}
 .site-header{transition:opacity .35s,transform .35s}
 .hdr-off .site-header{opacity:0;transform:translateY(-100%);pointer-events:none}
+
+/* BIZZOTTO CERAMICS SHOWROOM WALKTHROUGH FIX */
+
+.walk {
+  position: relative;
+  min-height: 300vh;
+  padding: 0 !important;
+  overflow: clip;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--ivory);
+}
+
+.shot {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  background-color: #eee;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 20, 40, .65),
+    rgba(5, 20, 40, .08)
+  );
+  pointer-events: none;
+}
+
+.cap {
+  position: absolute;
+  z-index: 3;
+  left: 7%;
+  top: 30%;
+  max-width: 620px;
+  padding: 25px;
+  color: white;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .5s, transform .5s;
+  pointer-events: none;
+}
+
+.cap.on {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.cap h1,
+.cap h2,
+.cap p {
+  color: white;
+}
+
+.cap h1 {
+  font-size: clamp(38px, 6vw, 76px);
+}
+
+.cap h2 {
+  font-size: clamp(30px, 5vw, 55px);
+}
+
+.feat {
+  position: absolute;
+  z-index: 4;
+  bottom: 35px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  color: white;
+  transition: opacity .4s;
+}
+
+.feat span {
+  background: rgba(11, 37, 69, .8);
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 800;
+}
+
+.hint {
+  position: absolute;
+  z-index: 4;
+  bottom: 25px;
+  right: 25px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+@media(max-width:899px) {
+  .walk {
+    min-height: 300vh;
+  }
+
+  .stage {
+    height: 100svh;
+  }
+
+  .cap {
+    left: 4%;
+    right: 4%;
+    top: 28%;
+    padding: 15px;
+  }
+
+  .feat {
+    bottom: 65px;
+    gap: 7px;
+  }
+
+  .feat span {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  .hint {
+    bottom: 20px;
+    right: 20px;
+  }
+}
