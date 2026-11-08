@@ -41,7 +41,14 @@ if(home){
     document.body.classList.toggle('desk',d);
     document.body.classList.toggle('hdr-off',d&&p<.06);
     const base=d?1:1.38;
-    shot.style.transform=`translate(-50%,-50%) scale(${base+(1.9-base)*p})`;
+    const zoom = base + (2.2 - base) * p;
+const rotate = (p - 0.5) * -3;
+
+shot.style.transform = `
+  translate(-50%, -50%)
+  scale(${zoom})
+  rotateX(${rotate}deg)
+`;
     const i=d?(p<.1?-1:p<.4?0:p<.72?1:2):(p<.33?0:p<.7?1:2);
     caps.forEach((c,j)=>c.classList.toggle('on',j===i));
     feat.style.opacity=d&&p<.1?0:1;
@@ -50,4 +57,34 @@ if(home){
   addEventListener('scroll',upd,{passive:true});
   addEventListener('resize',upd);
   upd();
+}
+
+/* CINEMATIC 3D SHOWROOM EXPERIENCE */
+
+.walk {
+  perspective: 1200px;
+}
+
+.stage {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.shot {
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  box-shadow: 0 25px 80px rgba(0,0,0,.25);
+}
+
+.shade {
+  background: linear-gradient(
+    90deg,
+    rgba(5,15,30,.65),
+    rgba(5,15,30,.05)
+  );
+}
+
+.cap {
+  text-shadow: 0 3px 15px rgba(0,0,0,.4);
 }
