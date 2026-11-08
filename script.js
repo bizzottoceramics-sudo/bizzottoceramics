@@ -16,7 +16,7 @@ const home=$('#home');
 if(home){
   home.className='walk';
   home.innerHTML=`<div class="stage">
-    <div class="shot" style="background:url(images/showroom.png) center/100% 100% no-repeat">
+   <div class="shot" style="background:url('./images/Bizzotto%20Ceramics%20Luxury%20Showroom%20(1).png') center/100% 100% no-repeat">
       <a class="hs" style="left:29.5%;top:3.2%;width:8.4%;height:4.4%" href="#home" aria-label="Our showroom"></a>
       <a class="hs" style="left:40.2%;top:3.2%;width:8.9%;height:4.4%" href="#products" aria-label="Tile collections"></a>
       <a class="hs" style="left:51.3%;top:3.2%;width:3.9%;height:4.4%" href="#brands" aria-label="Brands"></a>
